@@ -975,8 +975,9 @@ static NSDictionary* googlePlist;
 - (void)setScreenName:(CDVInvokedUrlCommand *)command {
     @try {
         NSString* name = [command.arguments objectAtIndex:0];
+        NSString* screenClass = [command.arguments objectAtIndex:1];
 
-        [FIRAnalytics setScreenName:name screenClass:NULL];
+        [FIRAnalytics setScreenName:name screenClass:screenClass];
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }@catch (NSException *exception) {

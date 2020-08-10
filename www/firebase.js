@@ -120,8 +120,8 @@ exports.logEvent = function (name, params, success, error) {
   exec(success, error, "FirebasePlugin", "logEvent", [name, params]);
 };
 
-exports.setScreenName = function (name, success, error) {
-  exec(success, error, "FirebasePlugin", "setScreenName", [name]);
+exports.setScreenName = function (name, screenClass, success, error) {
+  exec(success, error, "FirebasePlugin", "setScreenName", [name, screenClass]);
 };
 
 exports.setUserId = function (id, success, error) {

@@ -228,7 +228,7 @@ public class FirebasePlugin extends CordovaPlugin {
                 this.setCrashlyticsUserId(callbackContext, args.getString(0));
                 return true;
             } else if (action.equals("setScreenName")) {
-                this.setScreenName(callbackContext, args.getString(0));
+                this.setScreenName(callbackContext, args.getString(0), args.getString(1));
                 return true;
             } else if (action.equals("setUserId")) {
                 this.setUserId(callbackContext, args.getString(0));
@@ -799,12 +799,12 @@ public class FirebasePlugin extends CordovaPlugin {
         });
     }
 
-    private void setScreenName(final CallbackContext callbackContext, final String name) {
+    private void setScreenName(final CallbackContext callbackContext, final String name, final String screenClass) {
         // This must be called on the main thread
         cordovaActivity.runOnUiThread(new Runnable() {
             public void run() {
                 try {
-                    mFirebaseAnalytics.setCurrentScreen(cordovaActivity, name, null);
+                    mFirebaseAnalytics.setCurrentScreen(cordovaActivity, name, screenClass);
                     callbackContext.success();
                 } catch (Exception e) {
                     handleExceptionWithContext(e, callbackContext);

@@ -98,7 +98,8 @@ interface FirebasePlugin {
         eventProperties: object
     ): void
     setScreenName(
-        screenName: string
+        screenName: string,
+        screenClass: string
     ): void
     setUserId(
         userId: string
